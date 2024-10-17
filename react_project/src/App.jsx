@@ -1,15 +1,16 @@
+// router setup
 import {
   Route,
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
 } from 'react-router-dom'
+import HomePage from './pages/HomePage'
+import MainLayout from './layouts/MainLayout'
+import JobsPage from './pages/JobsPage';
+// import ViewAllJobs from './components/ViewAllJobs';
 
-import Navbar from "./components/navbar";
-import Hero from "./components/Hero";
-import HomeCards from "./components/HomeCards";
-import JobListings from "./components/JobListings";
-import ViewAllJobs from "./components/ViewAllJobs";
+
 
 // every react component will return jsx but you can only return only one element with as much as functioning inside it , it must be wrapped inside a single parent element
 // wrapped in a fragment "<></>" 
@@ -17,17 +18,20 @@ import ViewAllJobs from "./components/ViewAllJobs";
 
 const router = createBrowserRouter(
   // for home page 
-  createRoutesFromElements(<Route index element/>)
+  createRoutesFromElements(
+    <Route path='/' element={<MainLayout/>}>
+      <Route index element={<HomePage />} />
+      <Route path='/jobs' element={<JobsPage />} />
+      {/* <Route path='/add-job' element={< />} /> */}
+    </Route>
+    
+  )
 )
 
 const App = () => {
   return (
     <>
-      <Navbar/>
-      <Hero/>
-      <HomeCards/>
-      <JobListings/>
-      <ViewAllJobs/>
+      <RouterProvider router={router}/>
     </>
   );
 };
