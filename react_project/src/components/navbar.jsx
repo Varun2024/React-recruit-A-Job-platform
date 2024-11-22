@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 
 const Navbar = () => {
-  const linkclass = ({isActive}) => isActive ? "text-white bg-black hover:bg-gray-600 hover:text-white rounded-md px-3 py-2" : 'text-white hover:bg-gray-900 hover:text-white rounded-md px-3 py-2'
+  const linkclass = ({isActive}) => isActive ? "text-white bg-black hover:bg-gray-700 hover:text-white rounded-md px-3 py-2" : 'text-white hover:bg-gray-800 hover:text-white rounded-md px-3 py-2'
 
   return (
       <nav className="bg-indigo-700 border-b border-indigo-500">
