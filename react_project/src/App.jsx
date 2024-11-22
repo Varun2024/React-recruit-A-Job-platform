@@ -8,6 +8,7 @@ import {
 import HomePage from './pages/HomePage'
 import MainLayout from './layouts/MainLayout'
 import JobsPage from './pages/JobsPage';
+import NotFound from './pages/NotFound';
 // import ViewAllJobs from './components/ViewAllJobs';
 
 
@@ -19,10 +20,15 @@ import JobsPage from './pages/JobsPage';
 const router = createBrowserRouter(
   // for home page 
   createRoutesFromElements(
+    // mainlayout parent route
     <Route path='/' element={<MainLayout/>}>
+
+      {/* components routes nested in the mainlayouts routes */}
       <Route index element={<HomePage />} />
       <Route path='/jobs' element={<JobsPage />} />
+      <Route path='*' element={<NotFound />} />
       {/* <Route path='/add-job' element={< />} /> */}
+
     </Route>
     
   )
