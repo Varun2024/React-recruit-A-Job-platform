@@ -1,23 +1,24 @@
 import { useState, useEffect } from 'react'
 import JobListing from './JobListing'
-import Spinner from './spinner';
+import Spinner from './Spinner';
 // ishome is used as props for diff situation of sowing jobs at home page and on jobs page, by default its false so itll show all jobs but when the props is set to true showing 3 jobs at home page
 
 // eslint-disable-next-line react/prop-types
 const JobListings = ({isHome = false}) => {
     const [jobs , setJobs] = useState([]);//default value in useState is empty bcoz we will request using useEffect from the server and fill the empty array  
-    
+
     // eslint-disable-next-line no-unused-vars
     const [loading , setLoading] = useState(true) // for loading animation while requesting and after the fetching the default value will be false
 
 // fetching the data from the server and setting state of the job which currently empty(empty array) with the fetched data
     useEffect(() => {
         const fetchJobs = async () =>{
-            const apiUrl = isHome ? 'http://localhost:8000/jobs?_limit=3' : 'http://localhost:8000/jobs' // _limit is the key here
+            // proxu usage
+            const apiUrl = isHome ? '/api/jobs?_limit=3' : '/api/jobs' // _limit is the key here
             try {
                 const res = await fetch(apiUrl)
                 const data = await res.json()//storing fetched data
-                setJobs(data)
+                setJobs(data) //setting the state of the 'jobs' after the data being fetched
             } catch (error) {
                 console.log('Error fetching data', error)
             }finally{
