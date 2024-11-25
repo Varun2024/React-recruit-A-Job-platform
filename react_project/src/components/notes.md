@@ -1,0 +1,1 @@
+the components are majorly used in homepage and are used by different pages like the job page is using the compoment joblistings
