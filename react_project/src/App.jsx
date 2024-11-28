@@ -19,25 +19,31 @@ import JobPage , { jobLoader } from './pages/JobPage';
 // wrapped in a fragment "<></>" 
 // if need to add dynamic values in jsx , use {} and put whatever value inside that
 
-const router = createBrowserRouter(
-  // for home page 
-  createRoutesFromElements(
-    // mainlayout parent route
-    <Route path='/' element={<MainLayout/>}>
-      {/* components routes nested in the mainlayouts routes */}
-      <Route index element={<HomePage />} />
-      <Route path='/jobs' element={<JobsPage />} /> {/* page containing all jobs */}
-      <Route path='/add-job' element={<AddJobPage />} /> {/* page containing all add job section */}
-      <Route path='/jobs/:id' element={<JobPage />} loader= {jobLoader}/> {/* page containing singular jobs */}
-      <Route path='*' element={<NotFound />} />
-      {/* <Route path='/add-job' element={< />} /> */}
 
-    </Route>
-    
-  )
-)
 
 const App = () => {
+
+  const addJob = (newJob)=>{
+    console.log(newJob)
+  }
+
+
+  const router = createBrowserRouter(
+    // for home page 
+    createRoutesFromElements(
+      // mainlayout parent route
+      <Route path='/' element={<MainLayout/>}>
+        {/* components routes nested in the mainlayouts routes */}
+        <Route index element={<HomePage />} />
+        <Route path='/jobs' element={<JobsPage />} /> {/* page containing all jobs */}
+        <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob}/>} /> {/* page containing all add job section */}
+        <Route path='/jobs/:id' element={<JobPage />} loader= {jobLoader}/> {/* page containing singular jobs */}
+        <Route path='*' element={<NotFound />} />
+        {/* <Route path='/add-job' element={< />} /> */}
+  
+      </Route>
+    )
+  )
   return (
     <>
       <RouterProvider router={router}/>
