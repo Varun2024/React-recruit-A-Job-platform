@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+// addjobsubmit comes as newJob function from the app.jsx file 
+// eslint-disable-next-line react/prop-types
 const AddJobPage = ({addJobSubmit}) => {
+    // we are changing the state of the fields using hooks and the change are recorder as the newJob
     const [title , setTitle] = useState('')
     const [type , setType] = useState('Full-time')
     const [Location , setLocation] = useState('')
@@ -11,6 +14,8 @@ const AddJobPage = ({addJobSubmit}) => {
     const [companyDescription , setCompanyDescription] = useState('') 
     const [contactPhone, setContactPhone] = useState('')
     const [contactEmail, setContactEmail] = useState('')
+
+    const navigate = useNavigate();
 
     const submitForm = (e) => {
       // stop the default behaviour
@@ -30,6 +35,7 @@ const AddJobPage = ({addJobSubmit}) => {
         }
       }
       addJobSubmit(newJob)
+      return navigate('/jobs')
     }
     return (
       <section className="bg-indigo-50">
@@ -128,7 +134,7 @@ const AddJobPage = ({addJobSubmit}) => {
                   className="border rounded w-full py-2 px-3 mb-2"
                   placeholder="Company Location"
                   required
-                  value = {location}
+                  value = {Location}
                   onChange={(e) => setLocation(e.target.value)} 
                 />
               </div>
