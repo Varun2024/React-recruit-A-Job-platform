@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // router setup
 import {
   Route,
@@ -23,15 +24,25 @@ import JobPage , { jobLoader } from './pages/JobPage';
 
 const App = () => {
   // add new job when the user clicks submit
+  // add new job
   const addJob = async (newJob) => {
-    console.log(newJob)
     const res = await fetch('/api/jobs',{
       method: 'POST',
       headers:{
         'Content-Type' : 'application/json'
       },
       // data will go under the headers in the body
-      body:JSON.stringify(newJob)
+      body : JSON.stringify(newJob)
+    })
+    return
+  }
+
+  // delete job
+  const deleteJob = async (id) => {
+    // delete request
+    const res = await fetch(`/api/jobs/${id}`,{
+      method: 'DELETE'
+
     })
     return
   }
@@ -46,7 +57,7 @@ const App = () => {
         <Route index element={<HomePage />} />
         <Route path='/jobs' element={<JobsPage />} /> {/* page containing all jobs */}
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob}/>} /> {/* page containing all add job section and function addjob is passed as a prop in the addjob page*/}
-        <Route path='/jobs/:id' element={<JobPage />} loader= {jobLoader}/> {/* page containing singular jobs */}
+        <Route path='/jobs/:id' element={<JobPage deleteJob={ deleteJob }/>} loader= {jobLoader}/> {/* page containing singular jobs */}
         <Route path='*' element={<NotFound />} />
         {/* <Route path='/add-job' element={< />} /> */}
   

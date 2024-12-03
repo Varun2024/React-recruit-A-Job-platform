@@ -1,18 +1,31 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-unused-vars */
 // import { useState , useEffect } from "react"
-import { useParams , useLoaderData } from "react-router-dom"
-import Spinner from "../components/Spinner"
+import { useParams , useLoaderData, useNavigate } from "react-router-dom"
 import { FaArrowLeft,FaMapMarker } from "react-icons/fa"
 import { Link } from "react-router-dom"
+import { toast } from "react-toastify"
 
 
 
 
-const JobPage = () => {
+const JobPage = ({deleteJob}) => {
+  const navigate = useNavigate()
   const {id} = useParams()
   const job = useLoaderData()
-  //block for data fetching using useeffect
+
+  const onDeleteClick = (jobId) => {
+    const confirm = window.confirm('You sure about that !?')
+
+    // if the users selects no, nothing happens, we just normally return
+    if (!confirm) return
+    // the deleteJob is called here that is defined in the app.jsx with a single param id  
+    deleteJob(jobId)
+    toast.success('Job deleted fam')
+    return navigate('/jobs')
+  }
+
+  //block for data fetching using useEffect
   // const [job , setJob] = useState(null)
   // const [loading ,  setLoading ] = useState(true)
   
@@ -118,7 +131,7 @@ const JobPage = () => {
                   className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                   >Edit Job</a
                 >
-                <button
+                <button onClick={() => onDeleteClick(job.id)}
                   className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >
                   Delete Job
