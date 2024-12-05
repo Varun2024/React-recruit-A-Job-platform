@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-unused-vars */
 // import { useState , useEffect } from "react"
@@ -12,6 +13,7 @@ import { toast } from "react-toastify"
 const JobPage = ({deleteJob}) => {
   const navigate = useNavigate()
   const {id} = useParams()
+  // the fetched data is than stored in the job variable
   const job = useLoaderData()
 
   const onDeleteClick = (jobId) => {
@@ -126,11 +128,12 @@ const JobPage = ({deleteJob}) => {
               {/* <!-- Manage --> */}
               <div className="bg-white p-6 rounded-lg shadow-md mt-6">
                 <h3 className="text-xl font-bold mb-6">Manage Job</h3>
-                <a
-                  href="/add-job.html"
+                <Link
+                  to={`/edit-job/${job.id}`}
                   className="bg-indigo-500 hover:bg-indigo-600 text-white text-center font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
-                  >Edit Job</a
-                >
+                  >Edit Job
+                </Link>
+
                 <button onClick={() => onDeleteClick(job.id)}
                   className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
                 >

@@ -12,6 +12,7 @@ import JobsPage from './pages/JobsPage';
 import NotFound from './pages/NotFound';
 import AddJobPage from './pages/AddJobPage';
 import JobPage , { jobLoader } from './pages/JobPage';
+import EditJobPage from './pages/EditJobPage';
 // import ViewAllJobs from './components/ViewAllJobs';
 
 
@@ -47,6 +48,19 @@ const App = () => {
     return
   }
 
+  // update job
+  const updateJob = async (job) =>{
+    const res = await fetch(`/api/jobs/${job.id}`,{
+      method: 'PUT',
+      headers:{
+        'Content-Type' : 'application/json'
+      },
+      // data will go under the headers in the body
+      body : JSON.stringify(job)
+    })
+    return
+  }
+
 
   const router = createBrowserRouter(
     // for home page 
@@ -57,7 +71,17 @@ const App = () => {
         <Route index element={<HomePage />} />
         <Route path='/jobs' element={<JobsPage />} /> {/* page containing all jobs */}
         <Route path='/add-job' element={<AddJobPage addJobSubmit={addJob}/>} /> {/* page containing all add job section and function addjob is passed as a prop in the addjob page*/}
-        <Route path='/jobs/:id' element={<JobPage deleteJob={ deleteJob }/>} loader= {jobLoader}/> {/* page containing singular jobs */}
+        <Route 
+          path='/edit-job/:id' 
+          element={<EditJobPage updateJobSubmit={updateJob} />} 
+          loader= {jobLoader}
+        />
+        <Route 
+          path='/jobs/:id' 
+          element={<JobPage deleteJob={ deleteJob }/>} 
+          loader= {jobLoader}
+        /> {/* page containing singular jobs */}
+
         <Route path='*' element={<NotFound />} />
         {/* <Route path='/add-job' element={< />} /> */}
   

@@ -18,13 +18,13 @@
       "id": "2",
       "title": "Front-End Engineer (React & Redux)",
       "type": "Full-Time",
-      "location": "Miami, FL",
       "description": "Join our team as a Front-End Developer in sunny Miami, FL. We are looking for a motivated individual with a passion for crafting beautiful and responsive web applications. Experience with UI/UX design principles and a strong attention to detail are highly desirable.",
+      "location": "Miami, FL",
       "salary": "$70K - $80K",
       "company": {
         "name": "Veneer Solutions",
         "description": "Veneer Solutions is a creative agency specializing in digital design and development. Our team is dedicated to pushing the boundaries of creativity and innovation to deliver exceptional results for our clients.",
-        "contactEmail": "contact@loremipsum.com",
+        "contactEmail": "contact@lorem.com",
         "contactPhone": "555-555-5555"
       }
     },
@@ -85,15 +85,15 @@
       }
     },
     {
-      "id": "c934",
-      "title": "test 1",
+      "id": "6ab2",
+      "title": "rand org",
       "type": "Full-time",
-      "description": "hola amigo this is a test",
+      "description": "randpna on top",
       "location": "pakisdesh",
-      "salary": "$60K - 70K",
+      "salary": "Under 50k",
       "company": {
-        "name": "rand org",
-        "description": "randpna on top",
+        "name": "rand ltd",
+        "description": "randpna pel k",
         "contactEmail": "rand@gmail.com",
         "contactPhone": ""
       }
