@@ -14,7 +14,7 @@ const JobPage = ({deleteJob}) => {
   const navigate = useNavigate()
   const {id} = useParams()
   // the fetched data is than stored in the job variable
-  const job = useLoaderData()
+  const job = useLoaderData() //the joblaoder data gets stored in here
 
   const onDeleteClick = (jobId) => {
     const confirm = window.confirm('You sure about that !?')
