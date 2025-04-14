@@ -83,20 +83,6 @@
         "contactEmail": "contact@ipsumlorem.com",
         "contactPhone": "555-555-5555"
       }
-    },
-    {
-      "id": "6ab2",
-      "title": "rand org",
-      "type": "Full-time",
-      "description": "randpna on top",
-      "location": "pakisdesh",
-      "salary": "Under 50k",
-      "company": {
-        "name": "rand ltd",
-        "description": "randpna pel k",
-        "contactEmail": "rand@gmail.com",
-        "contactPhone": ""
-      }
     }
   ]
 }

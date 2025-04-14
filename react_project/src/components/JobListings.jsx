@@ -7,13 +7,12 @@ import Spinner from './Spinner';
 const JobListings = ({isHome = false}) => {
     const [jobs , setJobs] = useState([]);//default value in useState is empty bcoz we will request using useEffect from the server and fill the empty array  
 
-    // eslint-disable-next-line no-unused-vars
-    const [loading , setLoading] = useState(true) // for loading animation while requesting and after the fetching the default value will be false
+    const [loading , setLoading] = useState(true)// for loading animation while requesting and after the fetching the default value will be false
 
 // fetching the data from the server and setting state of the job which currently empty(empty array) with the fetched data
     useEffect(() => {
         const fetchJobs = async () =>{
-            // proxu usage
+            // proxy usage
             const apiUrl = isHome ? '/api/jobs?_limit=3' : '/api/jobs' // _limit is the key here
             try {
                 const res = await fetch(apiUrl)
@@ -26,7 +25,7 @@ const JobListings = ({isHome = false}) => {
             }
         } 
         fetchJobs()
-    }, []);
+    }, [isHome]);
 
 
   return (

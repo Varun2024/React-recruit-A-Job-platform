@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import PropTypes from "prop-types";
 const Hero = ({
     title = 'Become a React Dev' ,
@@ -23,10 +25,6 @@ const Hero = ({
     </section>
   );
 };
-// prop-type validation
-Hero.propTypes = {
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-  };
+
 
 export default Hero
