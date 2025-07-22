@@ -13,7 +13,7 @@ const JobListings = ({isHome = false}) => {
     useEffect(() => {
         const fetchJobs = async () =>{
             // proxy usage
-            const apiUrl = isHome ? '/api/jobs?_limit=3' : '/api/jobs' // _limit is the key here
+            const apiUrl = isHome ? 'https://recruit-json-api.onrender.com/jobs?_limit=3' : 'https://recruit-json-api.onrender.com/jobs' // _limit is the key here
             try {
                 const res = await fetch(apiUrl)
                 const data = await res.json()//storing fetched data

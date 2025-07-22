@@ -150,7 +150,7 @@ const JobPage = ({deleteJob}) => {
 
 {/* here useparams hook returns the id/value pair which is then passed into the link reference  */}
 const jobLoader = async ({ params }) => {
-  const res = await fetch(`/api/jobs/${params.id}`);
+  const res = await fetch(`https://recruit-json-api.onrender.com/jobs/${params.id}`);
   const data = await res.json()
   return data;
 }
